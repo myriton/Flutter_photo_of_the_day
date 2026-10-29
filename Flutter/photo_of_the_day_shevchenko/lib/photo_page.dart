@@ -126,6 +126,37 @@ Class _PhotoPageState extends State<PhotoPage> {
       ),
     }
 
-    if (_image)
+    if (_imageUrl != null) {
+      return Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(
+              _imageUrl!,
+              fit: BoxFit.cover,
+              width: double.infinity,
+            ),
+          ),
+        ),
+      );
+    }
+
+    return const Expanded(
+      child: Center(
+        child: Text(
+          'Нажмите кнопку\nчтобы загрузить фото',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.grey,
+          ),
+        ),
+      ),
+    );
   }
+
+  Widget _buildButton
 }
